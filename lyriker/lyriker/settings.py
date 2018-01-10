@@ -2,7 +2,7 @@
 
 
 
-# Scrapy settings for airbnb project
+# Scrapy settings for lyriker project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -15,20 +15,9 @@ BOT_NAME = 'lyriker'
 
 SPIDER_MODULES = ['lyriker.spiders']
 NEWSPIDER_MODULE = 'lyriker.spiders'
-MONGODB = [
-    'mongodb://complus:DUotto618@adriana:27018',
-    'mongodb://complus:DUotto618@annika:27018',
-    'mongodb://complus:DUotto618@jasmina:27018',
-    'mongodb://complus:DUotto618@laura:27018',
-    'mongodb://complus:DUotto618@sarah:27018',
-    'mongodb://complus:DUotto618@silke:27018', ]
-#MONGODB_CLIENT = pymongo.MongoClient(MONGODB)
-# DB=MONGODB_CLIENT.airbnb
-# RENTALS_COLLECTION=DB.rentals
-# CONTROL_COLLECTION=DB.control
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'airbnb (+http://www.yourdomain.com)'
+#USER_AGENT = 'lyriker (+http://www.yourdomain.com)'
 #USER_AGENT= 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.36 Safari/535.7'
 
 # USER_AGENT_LIST = [
@@ -74,19 +63,19 @@ COOKIES_ENABLED = False
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 # SPIDER_MIDDLEWARES = {
-#    'airbnb.middlewares.SpiderMiddleware': 543,
+#    'lyriker.middlewares.SpiderMiddleware': 543,
 # }
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 # DOWNLOADER_MIDDLEWARES = {
-#    'airbnb.middlewares.MyCustomDownloaderMiddleware': 543,
+#    'lyriker.middlewares.MyCustomDownloaderMiddleware': 543,
 # }
-# DOWNLOADER_CLIENTCONTEXTFACTORY = 'airbnb.middlewares.CustomContextFactory'
+# DOWNLOADER_CLIENTCONTEXTFACTORY = 'lyriker.middlewares.CustomContextFactory'
 
 DOWNLOADER_MIDDLEWARES = {
-    'airbnb.middlewares.RandomUserAgentMiddleware': 400,
-    #  'airbnb.middlewares.ProxyMiddleware': 410,
-    'airbnb.middlewares.LimitHandlerMiddleware': 650,
+    'lyriker.middlewares.RandomUserAgentMiddleware': 400,
+    #  'lyriker.middlewares.ProxyMiddleware': 410,
+    'lyriker.middlewares.LimitHandlerMiddleware': 650,
 
 }
 # Enable or disable extensions
@@ -98,10 +87,10 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 # ITEM_PIPELINES = {
-#    'airbnb.pipelines.SomePipeline': 300,
+#    'lyriker.pipelines.SomePipeline': 300,
 #}
 ITEM_PIPELINES = {
-    'airbnb.pipelines.MongoDBPipeline': 300,
+    'lyriker.pipelines.LyrikerPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
