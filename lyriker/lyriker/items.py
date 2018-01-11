@@ -14,5 +14,5 @@ class Lyriker_Item(scrapy.Item):
 
     artist = scrapy.Field()
     song_name = scrapy.Field()
-    song_lyrics = scrapy.Field()
+    lyrics = scrapy.Field()
     pass

@@ -15,6 +15,13 @@ BOT_NAME = 'lyriker'
 
 SPIDER_MODULES = ['lyriker.spiders']
 NEWSPIDER_MODULE = 'lyriker.spiders'
+MONGODB = [
+    'mongodb://complus:DUotto618@adriana:27018',
+    'mongodb://complus:DUotto618@annika:27018',
+    'mongodb://complus:DUotto618@jasmina:27018',
+    'mongodb://complus:DUotto618@laura:27018',
+    'mongodb://complus:DUotto618@sarah:27018',
+    'mongodb://complus:DUotto618@silke:27018', ]
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'lyriker (+http://www.yourdomain.com)'

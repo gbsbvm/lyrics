@@ -49,13 +49,15 @@ class Songs_Spider(CrawlSpider):
     start_urls = ['https://www.lyrics.com/artist/Foo%20Fighters/144725', ]
 
     def __init__(self, artist=None,):
-        print artist
-
         self.allowed_domains = ["lyrics.com"]
-        artist = artist.replace('_', '+')
-        self.first_url = "https://www.lyrics.com/artist/" + artist + '/'
+        self.artist = artist.replace('_', '+')
+        self.first_url = "https://www.lyrics.com/artist/" + self.artist + '/'
 
     def start_requests(self):
+        if 'madonna' in self.first_url:
+            self.first_url = self.first_url + '64565'
+        elif 'cohen' in self.first_url:
+            self.first_url = self.first_url + '1948'
         yield Request(self.first_url, meta={
             'dont_redirect': True,
             'handle_httpstatus_list': [301, 302]
@@ -75,9 +77,16 @@ class Songs_Spider(CrawlSpider):
             }, callback=self.song_parser,)
 
     def song_parser(self, response):
-        raw_text = response.xpath(
-            '//pre[@id="lyric-body-text"]/text()').extract()
-        text = (' ').join(raw_text)
-        lyrics = text.replace('\r', ' ').replace(
-            '\n', ' ').replace('  ', ' ').replace('  ', ' ')
-        print lyrics
+        item = Lyriker_Item()
+        item["artist"] = self.artist.replace('+', '_')
+        raw_song_name =\
+            response.xpath('//h2[@id="lyric-title-text"]/text()').extract()
+        if raw_song_name:
+            item["song_name"] =raw_song_name[0]
+            raw_text = response.xpath(
+                '//pre[@id="lyric-body-text"]/text()').extract()
+            text = (' ').join(raw_text)
+            item["lyrics"] = text.replace('\r', ' ').replace(
+                '\n', ' ').replace('  ', ' ').replace('  ', ' ')
+
+            yield item
