@@ -1,3 +1,3 @@
 10th Januar 2018
 
-Test project for class with Christian
+Scraper exercise project to collect and store lyrics-music texts.
